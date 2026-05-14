@@ -1,0 +1,14 @@
+services:
+  slanggen-app:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Ensures it uses your existing Dockerfile
+    container_name: slanggen_service
+    ports:
+      - "80:80"              # Access via http://localhost or SURF IP
+    restart: always          # Restarts automatically on SURF resume/reboot
+    environment:
+      - PYTHONUNBUFFERED=1
+    # If you want to see changes without rebuilding, you can use volumes:
+    # volumes:
+    #   - ./backend:/app
